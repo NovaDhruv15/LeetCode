@@ -4,6 +4,6 @@ class Solution(object):
        for r in range(l , len(nums)):
         if nums[r] != nums[r-1]:
             nums[l] = nums[r]
-            l += 1
+            l+=1
        return l
         
