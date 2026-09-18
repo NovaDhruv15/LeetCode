@@ -3,12 +3,7 @@ class Solution:
         ans = {}
 
         for s in strs:
-            count = [0] * 26
-
-            for c in s:
-                count[ord(c) - ord('a')] += 1
-
-            key = tuple(count)
+            key = ''.join(sorted(s))
 
             if key not in ans:
                 ans[key] = []
