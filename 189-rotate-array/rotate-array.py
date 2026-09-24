@@ -1,12 +1,17 @@
 class Solution:
     def rotate(self, nums: list[int], k: int) -> None:
-        k %= len(nums)
-        if k:
-            # 1. In-place C-optimized reverse of the whole list
-            nums.reverse()
+        if not nums:
+            return
             
-            # 2. Reverse the first k elements using an iterator (avoids list concatenation)
-            nums[:k] = reversed(nums[:k])
-            
-            # 3. Reverse the remaining elements
-            nums[k:] = reversed(nums[k:])
+        n = len(nums)
+        k = k % n
+        
+        def reverse(start, end):
+            while start < end:
+                nums[start], nums[end] = nums[end], nums[start]
+                start += 1
+                end -= 1
+                
+        reverse(0, n - 1)
+        reverse(0, k - 1)
+        reverse(k, n - 1)
