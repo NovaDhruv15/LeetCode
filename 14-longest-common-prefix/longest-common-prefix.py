@@ -9,5 +9,4 @@ class Solution:
                 prefix.append(chars[0])
             else:
                 break
-
         return "".join(prefix)
