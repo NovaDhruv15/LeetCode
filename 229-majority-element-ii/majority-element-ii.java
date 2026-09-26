@@ -6,8 +6,6 @@ class Solution {
 
         int count1 = 0;
         int count2 = 0;
-
-        // Find candidates
         for (int x : nums) {
 
             if (x == candidate1) {
@@ -30,7 +28,6 @@ class Solution {
             }
         }
 
-        // Verify candidates
         count1 = 0;
         count2 = 0;
 
