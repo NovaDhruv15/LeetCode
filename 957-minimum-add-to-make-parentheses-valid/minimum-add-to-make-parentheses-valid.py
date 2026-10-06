@@ -1,14 +1,14 @@
 class Solution:
     def minAddToMakeValid(self, s):
-        open_needed = 0
-        additions = 0
+        first_list = 0
+        last_list = 0
 
         for char in s:
             if char == '(':
-                open_needed += 1
-            elif open_needed > 0:
-                open_needed -= 1
+                first_list += 1
+            elif first_list > 0:
+                first_list -= 1
             else:
-                additions += 1
+                last_list += 1
 
-        return additions + open_needed
+        return last_list + first_list
