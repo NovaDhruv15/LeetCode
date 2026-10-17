@@ -1,22 +1,23 @@
 class Solution:
     def minSwaps(self, nums: List[int]) -> int:
-        arr = sorted(nums, key=lambda x: (sum(int(d) for d in str(x)), x))
-        pos = {num: i for i, num in enumerate(arr)}
-        visited = [False] * len(nums)
-        ans = 0
-
-        for i in range(len(nums)):
-            if visited[i] or pos[nums[i]] == i:
+        for i, num in enumerate(nums):
+            curr = num
+            digit_sum = 0
+            while curr:
+                digit_sum += curr % 10
+                curr //= 10
+            nums[i] = (digit_sum, num, i)
+        nums.sort()
+        nums = [num[2] for num in nums]
+        n = len(nums)
+        visited = [False] * n
+        cycle = 0
+        for i, num in enumerate(nums):
+            if visited[i]:
                 continue
-
+            cycle += 1
             j = i
-            cycle = 0
-
             while not visited[j]:
                 visited[j] = True
-                j = pos[nums[j]]
-                cycle += 1
-
-            ans += cycle - 1
-
-        return ans
+                j = nums[j]
+        return n - cycle
