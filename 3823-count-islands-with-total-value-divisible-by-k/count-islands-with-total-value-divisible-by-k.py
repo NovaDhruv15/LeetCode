@@ -12,7 +12,7 @@ class Solution:
                         if 0 <= x < m and 0 <= y < n and grid[x][y]:
                             total += grid[x][y]
                             grid[x][y] = 0
-                            stack += [(x+1, y), (x-1, y), (x, y+1), (x, y-1)]
+                            stack += [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
                     if total % k == 0:
-                        count += 1
+                            count += 1
         return count
