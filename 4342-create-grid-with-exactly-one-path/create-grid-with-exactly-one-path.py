@@ -1,3 +1,8 @@
 class Solution:
     def createGrid(self, m: int, n: int) -> list[str]:
-        return ["." * n] + ["#" * (n - 1) + "."] * (m - 1)
+        g = [["#"] * n for _ in range(m)]
+        for j in range(n):
+            g[0][j] = "."
+        for i in range(m):
+            g[i][n - 1] = "."
+        return ["".join(row) for row in g]
